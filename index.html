@@ -1,616 +1,1091 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anas Nazeer Khan - Autonomous Systems &amp; Data Science</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --asphalt:#12151A;
-    --asphalt-2:#1B1F26;
-    --paper:#EDEAE2;
-    --paper-dim:#B9B6AC;
-    --red:#C8102E;
-    --blue:#4FA8D8;
-    --graphite:#5A5F68;
-    --line:#2A2E36;
-    --display: 'Space Grotesk', sans-serif;
-    --body: 'Inter', sans-serif;
-    --mono: 'JetBrains Mono', monospace;
-  }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    background:var(--asphalt);
-    color:var(--paper);
-    font-family:var(--body);
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 32px;}
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anas Nazeer Khan - Autonomous Systems &amp; Data Science</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --asphalt: #12151A;
+        --asphalt-2: #1B1F26;
+        --paper: #EDEAE2;
+        --paper-dim: #B9B6AC;
+        --red: #C8102E;
+        --blue: #4FA8D8;
+        --graphite: #5A5F68;
+        --line: #2A2E36;
+        --display: 'Space Grotesk', sans-serif;
+        --body: 'Inter', sans-serif;
+        --mono: 'JetBrains Mono', monospace;
+      }
 
-  ::selection{background:var(--red);color:var(--paper);}
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  /* Reduced motion */
-  @media (prefers-reduced-motion: reduce){
-    *{animation:none !important; transition:none !important;}
-  }
+      html {
+        scroll-behavior: smooth;
+      }
 
-  /* NAV */
-  header{
-    position:fixed;top:0;left:0;right:0;z-index:50;
-    background:rgba(18,21,26,0.85);
-    backdrop-filter:blur(8px);
-    border-bottom:1px solid var(--line);
-  }
-  nav{
-    max-width:1100px;margin:0 auto;padding:18px 32px;
-    display:flex;justify-content:space-between;align-items:center;
-  }
-  .callsign{
-    font-family:var(--mono);font-size:13px;letter-spacing:0.08em;
-    color:var(--paper-dim);
-  }
-  .callsign strong{color:var(--paper);font-weight:600;}
-  .navlinks{display:flex;gap:28px;font-family:var(--mono);font-size:12px;letter-spacing:0.06em;text-transform:uppercase;}
-  .navlinks a{color:var(--paper-dim);transition:color .2s;position:relative;}
-  .navlinks a:hover, .navlinks a:focus-visible{color:var(--blue);}
-  .navlinks a:focus-visible{outline:1px solid var(--blue);outline-offset:4px;}
+      body {
+        background: var(--asphalt);
+        color: var(--paper);
+        font-family: var(--body);
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
 
-  /* HERO */
-  .hero{
-    position:relative;
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    padding-top:90px;
-    overflow:hidden;
-  }
-  .trace-svg{
-    position:absolute;
-    inset:0;
-    width:100%;height:100%;
-    opacity:0.35;
-    pointer-events:none;
-  }
-  .trace-path{
-    fill:none;
-    stroke:var(--blue);
-    stroke-width:1.5;
-    stroke-dasharray:2000;
-    stroke-dashoffset:2000;
-    animation:draw 3.2s cubic-bezier(.4,0,.2,1) forwards;
-  }
-  .trace-path.red{stroke:var(--red);opacity:0.6;animation-delay:.3s;}
-  @keyframes draw{to{stroke-dashoffset:0;}}
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-  .eyebrow{
-    font-family:var(--mono);font-size:12px;letter-spacing:0.15em;
-    color:var(--blue);text-transform:uppercase;margin-bottom:20px;
-    display:flex;align-items:center;gap:10px;
-  }
-  .eyebrow::before{
-    content:'';width:8px;height:8px;border-radius:50%;
-    background:var(--red);
-    box-shadow:0 0 0 3px rgba(200,16,46,0.25);
-    animation:pulse 2s infinite;
-  }
-  @keyframes pulse{
-    0%,100%{box-shadow:0 0 0 3px rgba(200,16,46,0.25);}
-    50%{box-shadow:0 0 0 6px rgba(200,16,46,0.1);}
-  }
+      .wrap {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
 
-  h1.name{
-    font-family:var(--display);
-    font-weight:700;
-    font-size:clamp(2.6rem, 7vw, 5.2rem);
-    line-height:0.98;
-    letter-spacing:-0.02em;
-    max-width:900px;
-  }
-  h1.name .sub{
-    display:block;
-    font-weight:500;
-    font-size:0.34em;
-    color:var(--paper-dim);
-    margin-top:18px;
-    letter-spacing:0;
-    font-family:var(--body);
-    line-height:1.5;
-  }
+      ::selection {
+        background: var(--red);
+        color: var(--paper);
+      }
 
-  .telemetry-row{
-    display:flex;
-    gap:0;
-    margin-top:56px;
-    border-top:1px solid var(--line);
-    flex-wrap:wrap;
-  }
-  .channel{
-    flex:1;min-width:150px;
-    padding:18px 24px 18px 0;
-    border-right:1px solid var(--line);
-  }
-  .channel:last-child{border-right:none;}
-  .channel-label{
-    font-family:var(--mono);font-size:10.5px;letter-spacing:0.1em;
-    color:var(--graphite);text-transform:uppercase;margin-bottom:8px;
-  }
-  .channel-value{
-    font-family:var(--mono);font-size:1.6rem;font-weight:600;color:var(--paper);
-  }
-  .channel-value span{color:var(--blue);font-size:0.55em;font-weight:500;margin-left:4px;}
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
 
-  .scroll-cue{
-    position:absolute;bottom:36px;left:32px;
-    font-family:var(--mono);font-size:11px;color:var(--graphite);
-    display:flex;align-items:center;gap:8px;
-  }
-  .scroll-cue::after{
-    content:'';width:1px;height:32px;background:linear-gradient(var(--graphite), transparent);
-    animation:scrolldown 1.8s infinite;
-  }
-  @keyframes scrolldown{0%{opacity:0;}50%{opacity:1;}100%{opacity:0;}}
+      /* NAV */
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: rgba(18, 21, 26, 0.85);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
+      }
 
-  /* SECTION SHARED */
-  section{padding:110px 0;border-bottom:1px solid var(--line);}
-  .section-head{
-    display:flex;justify-content:space-between;align-items:baseline;
-    margin-bottom:56px;flex-wrap:wrap;gap:12px;
-  }
-  h2.section-title{
-    font-family:var(--display);font-size:clamp(1.8rem,3.4vw,2.6rem);
-    font-weight:600;letter-spacing:-0.01em;
-  }
-  .section-tag{
-    font-family:var(--mono);font-size:11px;color:var(--graphite);
-    letter-spacing:0.1em;text-transform:uppercase;
-  }
+      nav {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 18px 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-  /* LOG ENTRIES (experience) */
-  .log{border-top:1px solid var(--line);}
-  .entry{
-    display:grid;
-    grid-template-columns:150px 1fr;
-    gap:32px;
-    padding:36px 0;
-    border-bottom:1px solid var(--line);
-  }
-  .entry-meta{font-family:var(--mono);font-size:12px;color:var(--graphite);line-height:1.7;}
-  .entry-meta .status{color:var(--red);}
-  .entry-title{
-    font-family:var(--display);font-size:1.3rem;font-weight:600;margin-bottom:2px;
-  }
-  .entry-org{
-    font-family:var(--mono);font-size:12.5px;color:var(--blue);margin-bottom:16px;
-    letter-spacing:0.02em;
-  }
-  .entry ul{list-style:none;}
-  .entry li{
-    position:relative;padding-left:20px;margin-bottom:10px;
-    color:#D7D4CB;font-size:0.94rem;line-height:1.55;
-  }
-  .entry li::before{
-    content:'▸';position:absolute;left:0;color:var(--red);font-size:0.8em;top:2px;
-  }
+      .callsign {
+        font-family: var(--mono);
+        font-size: 13px;
+        letter-spacing: 0.08em;
+        color: var(--paper-dim);
+      }
 
-  @media (max-width:680px){
-    .entry{grid-template-columns:1fr;gap:10px;}
-    .entry-meta{display:flex;gap:14px;flex-wrap:wrap;}
-  }
+      .callsign strong {
+        color: var(--paper);
+        font-weight: 600;
+      }
 
-  .inline-case-link{
-    display:inline-block;margin-left:4px;
-    font-family:var(--mono);font-size:12px;color:var(--blue);
-    border-bottom:1px solid transparent;transition:border-color .2s;
-  }
-  .inline-case-link:hover, .inline-case-link:focus-visible{border-color:var(--blue);}
+      .navlinks {
+        display: flex;
+        gap: 28px;
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
 
-  /* CASE STUDY */
-  .case-study{background:var(--asphalt-2);}
-  .case-kicker{
-    font-family:var(--mono);font-size:11px;color:var(--red);
-    letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;
-  }
-  .case-title{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(1.9rem,4vw,2.8rem);letter-spacing:-0.01em;
-    max-width:760px;margin-bottom:20px;
-  }
-  .case-lede{
-    font-size:1.05rem;color:#D7D4CB;line-height:1.65;max-width:700px;margin-bottom:56px;
-  }
-  .case-body{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
-  @media (max-width:760px){.case-body{grid-template-columns:1fr;}}
-  .case-block{margin-bottom:36px;}
-  .case-block-label{
-    font-family:var(--mono);font-size:10.5px;color:var(--blue);
-    letter-spacing:0.1em;text-transform:uppercase;margin-bottom:12px;
-    padding-bottom:8px;border-bottom:1px solid var(--line);
-  }
-  .case-block p{font-size:0.95rem;color:#D7D4CB;line-height:1.65;margin-bottom:12px;}
-  .case-block p:last-child{margin-bottom:0;}
-  .diagram-frame{
-    border:1px solid var(--line);padding:28px;margin-bottom:24px;background:var(--asphalt);
-  }
-  .diagram-frame svg{width:100%;height:auto;display:block;}
-  .diagram-caption{
-    font-family:var(--mono);font-size:10.5px;color:var(--graphite);
-    text-align:center;margin-top:14px;letter-spacing:0.04em;
-  }
-  .result-stats{display:flex;gap:0;border-top:1px solid var(--line);margin-top:8px;}
-  .result-stat{flex:1;padding:16px 20px 0 0;}
-  .result-stat-val{font-family:var(--mono);font-weight:600;font-size:1.3rem;color:var(--paper);}
-  .result-stat-label{font-family:var(--mono);font-size:10px;color:var(--graphite);text-transform:uppercase;letter-spacing:0.06em;margin-top:4px;}
-  .back-to-log{
-    display:inline-block;margin-top:48px;font-family:var(--mono);font-size:12px;color:var(--paper-dim);
-    border-bottom:1px solid var(--line);padding-bottom:4px;transition:color .2s, border-color .2s;
-  }
-  .back-to-log:hover, .back-to-log:focus-visible{color:var(--blue);border-color:var(--blue);}
+      .navlinks a {
+        color: var(--paper-dim);
+        transition: color .2s;
+        position: relative;
+      }
 
-  /* SKILLS */
-  .skill-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;}
-  @media (max-width:680px){.skill-grid{grid-template-columns:1fr;}}
-  .skill-group-label{
-    font-family:var(--mono);font-size:11px;color:var(--blue);
-    text-transform:uppercase;letter-spacing:0.1em;margin-bottom:18px;
-    padding-bottom:10px;border-bottom:1px solid var(--line);
-  }
-  .pill-row{display:flex;flex-wrap:wrap;gap:8px;}
-  .pill{
-    font-family:var(--mono);font-size:12px;
-    padding:7px 12px;border:1px solid var(--line);
-    color:var(--paper-dim);
-    transition:all .2s;
-  }
-  .pill:hover{border-color:var(--blue);color:var(--blue);}
+      .navlinks a:hover,
+      .navlinks a:focus-visible {
+        color: var(--blue);
+      }
 
-  /* OPS / MOTORSPORT */
-  .ops-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);}
-  .op-card{background:var(--asphalt);padding:32px;}
-  @media (max-width:680px){.ops-grid{grid-template-columns:1fr;}}
-  .op-role{font-family:var(--display);font-weight:600;font-size:1.1rem;margin-bottom:4px;}
-  .op-org{font-family:var(--mono);font-size:11.5px;color:var(--red);margin-bottom:4px;}
-  .op-date{font-family:var(--mono);font-size:11px;color:var(--graphite);margin-bottom:14px;}
-  .op-desc{font-size:0.9rem;color:#D7D4CB;line-height:1.55;}
+      .navlinks a:focus-visible {
+        outline: 1px solid var(--blue);
+        outline-offset: 4px;
+      }
 
-  /* EDUCATION + LANGUAGES */
-  .edu-lang{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;}
-  @media (max-width:680px){.edu-lang{grid-template-columns:1fr;}}
-  .edu-item{margin-bottom:28px;}
-  .edu-degree{font-family:var(--display);font-weight:600;font-size:1.15rem;}
-  .edu-school{font-family:var(--mono);font-size:12px;color:var(--blue);margin:4px 0;}
-  .edu-date{font-family:var(--mono);font-size:11px;color:var(--graphite);}
-  .lang-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);}
-  .lang-name{font-family:var(--body);font-weight:500;}
-  .lang-level{font-family:var(--mono);font-size:11px;color:var(--graphite);text-transform:uppercase;letter-spacing:0.06em;}
+      /* HERO */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-top: 90px;
+        overflow: hidden;
+      }
 
-  /* FOOTER / CONTACT */
-  footer{padding:90px 0 50px;}
-  .contact-title{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(2rem,5vw,3.2rem);margin-bottom:32px;letter-spacing:-0.01em;
-  }
-  .contact-row{display:flex;flex-wrap:wrap;gap:28px;margin-bottom:60px;}
-  .contact-link{
-    font-family:var(--mono);font-size:13px;color:var(--paper);
-    border-bottom:1px solid var(--line);padding-bottom:4px;
-    transition:border-color .2s, color .2s;
-  }
-  .contact-link:hover, .contact-link:focus-visible{border-color:var(--blue);color:var(--blue);}
-  .foot-bottom{
-    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
-    font-family:var(--mono);font-size:11px;color:var(--graphite);
-    padding-top:24px;border-top:1px solid var(--line);
-  }
-</style>
-</head>
-<body>
+      .trace-svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.35;
+        pointer-events: none;
+      }
 
-<header>
-  <nav>
-    <div class="callsign"><strong>A. KHAN</strong> // AS‑24</div>
-    <div class="navlinks">
-      <a href="#log">Experience</a>
-      <a href="#amcl-case-study">AMCL Deep Dive</a>
-      <a href="#stack">Stack</a>
-      <a href="#ops">Ops</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
-</header>
+      .trace-path {
+        fill: none;
+        stroke: var(--blue);
+        stroke-width: 1.5;
+        stroke-dasharray: 2000;
+        stroke-dashoffset: 2000;
+        animation: draw 3.2s cubic-bezier(.4, 0, .2, 1) forwards;
+      }
 
-<section class="hero">
-  <svg class="trace-svg" viewBox="0 0 1100 700" preserveAspectRatio="none">
-    <path class="trace-path" d="M -50,520 C 100,480 180,560 300,500 S 480,380 560,420 S 700,560 820,480 S 980,300 1150,360" />
-    <path class="trace-path red" d="M -50,600 C 150,610 260,540 380,580 S 560,650 660,600 S 820,480 940,540 S 1050,600 1150,560" />
-  </svg>
+      .trace-path.red {
+        stroke: var(--red);
+        opacity: 0.6;
+        animation-delay: .3s;
+      }
 
-  <div class="wrap">
-    <div class="eyebrow">Live &mdash; Italy</div>
-    <h1 class="name">
-      Anas Nazeer Khan
-      <span class="sub">Autonomous systems engineer at UniNa Corse Formula Student, building the localisation stack that lets a driverless race car know exactly where it is on track, backed by a Data Science Master's and ground experience at Formula E races.</span>
-    </h1>
+      @keyframes draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
 
-    <div class="telemetry-row">
-      <div class="channel">
-        <div class="channel-label">Focus</div>
-        <div class="channel-value">Autonomous Systems &amp; ML</div>
-      </div>
-      <div class="channel">
-        <div class="channel-label">Field</div>
-        <div class="channel-value">Data Science / Robotics</div>
-      </div>
-      <div class="channel">
-        <div class="channel-label">Track Time</div>
-        <div class="channel-value">Formula Student + 2 seasons Formula Electric</div>
-      </div>
-      <div class="channel">
-        <div class="channel-label">Based</div>
-        <div class="channel-value">Italy</div>
-      </div>
-    </div>
-  </div>
+      .eyebrow {
+        font-family: var(--mono);
+        font-size: 12px;
+        letter-spacing: 0.15em;
+        color: var(--blue);
+        text-transform: uppercase;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
 
-  <div class="scroll-cue">SCROLL</div>
-</section>
+      .eyebrow::before {
+        content: '';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--red);
+        box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.25);
+        animation: pulse 2s infinite;
+      }
 
-<section id="log">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 class="section-title">Session Log</h2>
-      <div class="section-tag">Work Experience</div>
-    </div>
+      @keyframes pulse {
 
-    <div class="log">
-      <div class="entry">
-        <div class="entry-meta">AUG 2024<br>&mdash; PRESENT<br><span class="status">● ACTIVE</span></div>
-        <div>
-          <div class="entry-title">Autonomous Systems Engineer</div>
-          <div class="entry-org">UniNa Corse - Formula Student</div>
-          <ul>
-            <li>Implemented Adaptive Monte Carlo Localisation (AMCL) on the team's driverless vehicle using probabilistic modelling and sensor fusion, achieving a validated on-car deployment with no drift versus the team's SLAM-based positioning. <a href="#amcl-case-study" class="inline-case-link">Read the full case study →</a></li>
-            <li>Built a machine learning-based cone detection pipeline from camera data for real-time track boundary identification and path planning.</li>
-            <li>Developed MATLAB/Simulink models to validate vehicle dynamics and control logic before physical deployment, cutting on-track error risk.</li>
-            <li>Contributed to EKF-based state estimation and FastSLAM across perception, SLAM, and control, keeping global reference frames consistent through real-world testing.</li>
-          </ul>
+        0%,
+        100% {
+          box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.25);
+        }
+
+        50% {
+          box-shadow: 0 0 0 6px rgba(200, 16, 46, 0.1);
+        }
+      }
+
+      h1.name {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(2.6rem, 7vw, 5.2rem);
+        line-height: 0.98;
+        letter-spacing: -0.02em;
+        max-width: 900px;
+      }
+
+      h1.name .sub {
+        display: block;
+        font-weight: 500;
+        font-size: 0.34em;
+        color: var(--paper-dim);
+        margin-top: 18px;
+        letter-spacing: 0;
+        font-family: var(--body);
+        line-height: 1.5;
+      }
+
+      .telemetry-row {
+        display: flex;
+        gap: 0;
+        margin-top: 56px;
+        border-top: 1px solid var(--line);
+        flex-wrap: wrap;
+      }
+
+      .channel {
+        flex: 1;
+        min-width: 150px;
+        padding: 18px 24px 18px 0;
+        border-right: 1px solid var(--line);
+      }
+
+      .channel:last-child {
+        border-right: none;
+      }
+
+      .channel-label {
+        font-family: var(--mono);
+        font-size: 10.5px;
+        letter-spacing: 0.1em;
+        color: var(--graphite);
+        text-transform: uppercase;
+        margin-bottom: 8px;
+      }
+
+      .channel-value {
+        font-family: var(--mono);
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: var(--paper);
+      }
+
+      .channel-value span {
+        color: var(--blue);
+        font-size: 0.55em;
+        font-weight: 500;
+        margin-left: 4px;
+      }
+
+      .scroll-cue {
+        position: absolute;
+        bottom: 36px;
+        left: 32px;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--graphite);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .scroll-cue::after {
+        content: '';
+        width: 1px;
+        height: 32px;
+        background: linear-gradient(var(--graphite), transparent);
+        animation: scrolldown 1.8s infinite;
+      }
+
+      @keyframes scrolldown {
+        0% {
+          opacity: 0;
+        }
+
+        50% {
+          opacity: 1;
+        }
+
+        100% {
+          opacity: 0;
+        }
+      }
+
+      /* SECTION SHARED */
+      section {
+        padding: 110px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 56px;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      h2.section-title {
+        font-family: var(--display);
+        font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+        font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+
+      .section-tag {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--graphite);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      /* LOG ENTRIES (experience) */
+      .log {
+        border-top: 1px solid var(--line);
+      }
+
+      .entry {
+        display: grid;
+        grid-template-columns: 150px 1fr;
+        gap: 32px;
+        padding: 36px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .entry-meta {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--graphite);
+        line-height: 1.7;
+      }
+
+      .entry-meta .status {
+        color: var(--red);
+      }
+
+      .entry-title {
+        font-family: var(--display);
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 2px;
+      }
+
+      .entry-org {
+        font-family: var(--mono);
+        font-size: 12.5px;
+        color: var(--blue);
+        margin-bottom: 16px;
+        letter-spacing: 0.02em;
+      }
+
+      .entry ul {
+        list-style: none;
+      }
+
+      .entry li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 10px;
+        color: #D7D4CB;
+        font-size: 0.94rem;
+        line-height: 1.55;
+      }
+
+      .entry li::before {
+        content: '▸';
+        position: absolute;
+        left: 0;
+        color: var(--red);
+        font-size: 0.8em;
+        top: 2px;
+      }
+
+      @media (max-width:680px) {
+        .entry {
+          grid-template-columns: 1fr;
+          gap: 10px;
+        }
+
+        .entry-meta {
+          display: flex;
+          gap: 14px;
+          flex-wrap: wrap;
+        }
+      }
+
+      .inline-case-link {
+        display: inline-block;
+        margin-left: 4px;
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--blue);
+        border-bottom: 1px solid transparent;
+        transition: border-color .2s;
+      }
+
+      .inline-case-link:hover,
+      .inline-case-link:focus-visible {
+        border-color: var(--blue);
+      }
+
+      /* CASE STUDY */
+      .case-study {
+        background: var(--asphalt-2);
+      }
+
+      .case-kicker {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--red);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+
+      .case-title {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(1.9rem, 4vw, 2.8rem);
+        letter-spacing: -0.01em;
+        max-width: 760px;
+        margin-bottom: 20px;
+      }
+
+      .case-lede {
+        font-size: 1.05rem;
+        color: #D7D4CB;
+        line-height: 1.65;
+        max-width: 700px;
+        margin-bottom: 56px;
+      }
+
+      .case-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 56px;
+      }
+
+      @media (max-width:760px) {
+        .case-body {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .case-block {
+        margin-bottom: 36px;
+      }
+
+      .case-block-label {
+        font-family: var(--mono);
+        font-size: 10.5px;
+        color: var(--blue);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .case-block p {
+        font-size: 0.95rem;
+        color: #D7D4CB;
+        line-height: 1.65;
+        margin-bottom: 12px;
+      }
+
+      .case-block p:last-child {
+        margin-bottom: 0;
+      }
+
+      .diagram-frame {
+        border: 1px solid var(--line);
+        padding: 28px;
+        margin-bottom: 24px;
+        background: var(--asphalt);
+      }
+
+      .diagram-frame svg {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .diagram-caption {
+        font-family: var(--mono);
+        font-size: 10.5px;
+        color: var(--graphite);
+        text-align: center;
+        margin-top: 14px;
+        letter-spacing: 0.04em;
+      }
+
+      .result-stats {
+        display: flex;
+        gap: 0;
+        border-top: 1px solid var(--line);
+        margin-top: 8px;
+      }
+
+      .result-stat {
+        flex: 1;
+        padding: 16px 20px 0 0;
+      }
+
+      .result-stat-val {
+        font-family: var(--mono);
+        font-weight: 600;
+        font-size: 1.3rem;
+        color: var(--paper);
+      }
+
+      .result-stat-label {
+        font-family: var(--mono);
+        font-size: 10px;
+        color: var(--graphite);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        margin-top: 4px;
+      }
+
+      .back-to-log {
+        display: inline-block;
+        margin-top: 48px;
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--paper-dim);
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 4px;
+        transition: color .2s, border-color .2s;
+      }
+
+      .back-to-log:hover,
+      .back-to-log:focus-visible {
+        color: var(--blue);
+        border-color: var(--blue);
+      }
+
+      /* SKILLS */
+      .skill-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+      }
+
+      @media (max-width:680px) {
+        .skill-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .skill-group-label {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--blue);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: 18px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .pill {
+        font-family: var(--mono);
+        font-size: 12px;
+        padding: 7px 12px;
+        border: 1px solid var(--line);
+        color: var(--paper-dim);
+        transition: all .2s;
+      }
+
+      .pill:hover {
+        border-color: var(--blue);
+        color: var(--blue);
+      }
+
+      .ops-strip {
+        margin-top: 48px;
+        padding-top: 40px;
+        border-top: 1px solid var(--line);
+      }
+
+      /* OPS / MOTORSPORT */
+      .ops-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1px;
+        background: var(--line);
+      }
+
+      .op-card {
+        background: var(--asphalt);
+        padding: 32px;
+      }
+
+      @media (max-width:680px) {
+        .ops-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .op-role {
+        font-family: var(--display);
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 4px;
+      }
+
+      .op-org {
+        font-family: var(--mono);
+        font-size: 11.5px;
+        color: var(--red);
+        margin-bottom: 4px;
+      }
+
+      .op-date {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--graphite);
+        margin-bottom: 14px;
+      }
+
+      .op-desc {
+        font-size: 0.9rem;
+        color: #D7D4CB;
+        line-height: 1.55;
+      }
+
+      /* EDUCATION + LANGUAGES */
+      .edu-lang {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr;
+        gap: 56px;
+      }
+
+      @media (max-width:680px) {
+        .edu-lang {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .edu-item {
+        margin-bottom: 28px;
+      }
+
+      .edu-degree {
+        font-family: var(--display);
+        font-weight: 600;
+        font-size: 1.15rem;
+      }
+
+      .edu-school {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--blue);
+        margin: 4px 0;
+      }
+
+      .edu-date {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--graphite);
+      }
+
+      .lang-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .lang-name {
+        font-family: var(--body);
+        font-weight: 500;
+      }
+
+      .lang-level {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--graphite);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      /* FOOTER / CONTACT */
+      footer {
+        padding: 90px 0 50px;
+      }
+
+      .contact-title {
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        margin-bottom: 32px;
+        letter-spacing: -0.01em;
+      }
+
+      .contact-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 28px;
+        margin-bottom: 60px;
+      }
+
+      .contact-link {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--paper);
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 4px;
+        transition: border-color .2s, color .2s;
+      }
+
+      .contact-link:hover,
+      .contact-link:focus-visible {
+        border-color: var(--blue);
+        color: var(--blue);
+      }
+
+      .foot-bottom {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--graphite);
+        padding-top: 24px;
+        border-top: 1px solid var(--line);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="callsign">
+          <strong>A. KHAN</strong> // AS‑24
+        </div>
+        <div class="navlinks">
+          <a href="#log">Experience</a>
+          <a href="#amcl-case-study">AMCL Deep Dive</a>
+          <a href="#stack">Stack</a>
+          <a href="#ops">Ops</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+    <section class="hero">
+      <svg class="trace-svg" viewBox="0 0 1100 700" preserveAspectRatio="none">
+        <path class="trace-path" d="M -50,520 C 100,480 180,560 300,500 S 480,380 560,420 S 700,560 820,480 S 980,300 1150,360" />
+        <path class="trace-path red" d="M -50,600 C 150,610 260,540 380,580 S 560,650 660,600 S 820,480 940,540 S 1050,600 1150,560" />
+      </svg>
+      <div class="wrap">
+        <div class="eyebrow">Live &mdash; Italy</div>
+        <h1 class="name"> Anas Nazeer Khan <span class="sub">Autonomous systems engineer at UniNa Corse Formula Student, building the localisation stack that lets a driverless race car know exactly where it is on track, backed by a Data Science Master's and ground experience at Formula E races.</span>
+        </h1>
+        <div class="telemetry-row">
+          <div class="channel">
+            <div class="channel-label">Focus</div>
+            <div class="channel-value">Autonomous Systems &amp; ML</div>
+          </div>
+          <div class="channel">
+            <div class="channel-label">Field</div>
+            <div class="channel-value">Data Science / Robotics</div>
+          </div>
+          <div class="channel">
+            <div class="channel-label">Track Time</div>
+            <div class="channel-value">Formula Student + 2 seasons Formula Electric</div>
+          </div>
+          <div class="channel">
+            <div class="channel-label">Based</div>
+            <div class="channel-value">Italy</div>
+          </div>
         </div>
       </div>
-
-      <div class="entry">
-        <div class="entry-meta">AUG 2025<br>&mdash; FEB 2026</div>
-        <div>
-          <div class="entry-title">Intern - Generative AI</div>
-          <div class="entry-org">VanaciPrime - Remote</div>
-          <ul>
-            <li>Designed and deployed a multi-source document retrieval system spanning internal datasets and web sources across multiple client pipelines.</li>
-            <li>Implemented relevance-based scoring and iterative ML evaluation, improving accuracy and business alignment of model output.</li>
-            <li>Built an automated pipeline to parse MRZ identity documents, populate database fields, and generate ready-to-sign contracts, removing manual data entry end-to-end.</li>
-          </ul>
+      <div class="scroll-cue">SCROLL</div>
+    </section>
+    <section id="log">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title">Session Log</h2>
+          <div class="section-tag">Work Experience</div>
         </div>
-      </div>
-
-      <div class="entry">
-        <div class="entry-meta">DEC 2020<br>&mdash; SEP 2023</div>
-        <div>
-          <div class="entry-title">Senior Software Analyst</div>
-          <div class="entry-org">Capgemini, Mumbai</div>
-          <ul>
-            <li>Automated a daily enterprise reporting pipeline, eliminating manual effort across ~260 reporting cycles a year and cutting average issue resolution time by ~50%.</li>
-            <li>Resolved complex production issues in enterprise integration systems (webMethods), restoring operational continuity under time pressure.</li>
-            <li>Designed onboarding and knowledge-transfer sessions for new team members, accelerating ramp-up and standardising analytical practice.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="case-study" id="amcl-case-study">
-  <div class="wrap">
-    <div class="case-kicker">Project Deep Dive - UniNa Corse Formula Student</div>
-    <h2 class="case-title">Teaching our driverless race car to know exactly where it is</h2>
-    <p class="case-lede">On a driverless Formula Student car, the controller only steers as well as the position it's given. GPS is unreliable near buildings and unusable underground, exactly where our car still needs to know where it is. I built a ROS 2 localisation module that solves this with Adaptive Monte Carlo Localisation (AMCL), and it now feeds position directly into the car's controller with no drift versus the team's SLAM-based position, even over extended runs.</p>
-
-    <div class="case-body">
-      <div>
-        <div class="case-block">
-          <div class="case-block-label">The Problem</div>
-          <p>Our autonomous car plans every turn and brake point based on knowing exactly where it is on track. Wheel encoders and IMUs drift over time, GPS drops out near buildings and doesn't work underground, and even our SLAM-based position built live while driving can accumulate small errors over a run. The controller needs one clean, trustworthy position estimate to steer by, not several conflicting ones.</p>
-        </div>
-        <div class="case-block">
-          <div class="case-block-label">The Approach</div>
-          <p>AMCL solves this with a "particle filter". The car maintains thousands of hypotheses about where it might be, each a guess at position and heading. I built this as a full ROS 2 module in C++: it takes in cone detections from our perception system, plus steering angle and speed from either wheel encoders or an IMU, and propagates each hypothesis forward using a kinematic bicycle model which is the same simplified physics used to predict how the car actually turns.</p>
-          <p>Each hypothesis is then scored against which cones it "expects" to see versus what perception actually detected on track. Good hypotheses survive and multiply; poor ones are pruned. I added a health check (effective sample size) that detects when the filter is becoming unreliable and automatically resamples to recover, keeping the estimate stable rather than letting it silently degrade mid-run.</p>
-          <p>I also built the module to run two ways, both feeding the same core filter: live, using the map our SLAM system builds in real time on track, or offline, using a static CSV map for controlled bench testing the same flexible pattern already used for switching between IMU and Wheel encoder input. That let the team validate and tune the filter safely off-car before trusting it on-track.</p>
-          <p>This is where MCL wins over GPS: it never depends on an external signal at all. Instead of listening for satellites, it continuously checks what the car's own sensors actually see cones, steering, speed against the track layout, and corrects itself in real time. That matters because GPS isn't just "unreliable near buildings", trackside structures that throw the position off by metres, and complete signal loss underground where there's no line of sight to satellites at all. MCL doesn't have either failure mode, since it isn't listening for a signal to begin with.</p>
-        </div>
-      </div>
-
-      <div>
-        <div class="diagram-frame">
-          <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
-            <!-- track outline -->
-            <path d="M 40,220 C 40,140 110,80 230,80 C 350,80 420,140 420,220 C 420,270 370,270 330,240 C 290,210 250,240 210,240 C 150,240 100,270 60,240 C 45,232 40,226 40,220 Z"
-              fill="none" stroke="#2A2E36" stroke-width="26" stroke-linejoin="round"/>
-            <path d="M 40,220 C 40,140 110,80 230,80 C 350,80 420,140 420,220 C 420,270 370,270 330,240 C 290,210 250,240 210,240 C 150,240 100,270 60,240 C 45,232 40,226 40,220 Z"
-              fill="none" stroke="#4FA8D8" stroke-width="1" stroke-dasharray="4 4" opacity="0.4"/>
-
-            <!-- particle cloud (scattered, uncertain) -->
-            <g fill="#C8102E" opacity="0.55">
-              <circle cx="205" cy="95" r="2.4"/><circle cx="215" cy="88" r="2.4"/><circle cx="198" cy="102" r="2.4"/>
-              <circle cx="224" cy="97" r="2.4"/><circle cx="210" cy="108" r="2.4"/><circle cx="192" cy="90" r="2.4"/>
-              <circle cx="230" cy="85" r="2.4"/><circle cx="218" cy="105" r="2.4"/><circle cx="203" cy="80" r="2.4"/>
-              <circle cx="238" cy="93" r="2.4"/><circle cx="195" cy="112" r="2.4"/><circle cx="212" cy="78" r="2.4"/>
-            </g>
-            <text x="230" y="60" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5A5F68">INITIAL: HIGH UNCERTAINTY</text>
-
-            <!-- converged particle cluster -->
-            <g fill="#4FA8D8">
-              <circle cx="330" cy="238" r="1.8"/><circle cx="332" cy="240" r="1.8"/><circle cx="328" cy="236" r="1.8"/>
-              <circle cx="331" cy="235" r="1.8"/><circle cx="333" cy="238" r="1.8"/><circle cx="329" cy="241" r="1.8"/>
-            </g>
-            <circle cx="330" cy="238" r="8" fill="none" stroke="#4FA8D8" stroke-width="1.2"/>
-            <text x="330" y="270" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5A5F68">CONVERGED: CONFIDENT</text>
-
-            <!-- arrow -->
-            <path d="M 250,150 Q 290,180 315,215" fill="none" stroke="#5A5F68" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrow)"/>
-            <defs>
-              <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                <path d="M0,0 L6,3 L0,6 Z" fill="#5A5F68"/>
-              </marker>
-            </defs>
-          </svg>
-          <div class="diagram-caption">PARTICLE CLOUD CONVERGING ON TRUE POSITION AND STAYING THERE, LAP AFTER LAP</div>
-        </div>
-
-        <div class="case-block">
-          <div class="case-block-label">Results</div>
-          <p>Before touching the physical car, the logic was validated in MATLAB/Simulink against modelled vehicle dynamics, reducing the risk of costly on-track errors. On the real car, this AMCL module now feeds the controller's position input directly. Tested both offline against a static CSV map and live against our own SLAM map, it held a steady, accurate position with no drift versus the team's SLAM position, even over extended runs.</p>
-          <div class="result-stats">
-            <div class="result-stat">
-              <div class="result-stat-val">No drift</div>
-              <div class="result-stat-label">Vs. SLAM position</div>
+        <div class="log">
+          <div class="entry">
+            <div class="entry-meta">AUG 2024 <br>&mdash; PRESENT <br>
+              <span class="status">● ACTIVE</span>
             </div>
-            <div class="result-stat">
-              <div class="result-stat-val">Live</div>
-              <div class="result-stat-label">Feeds vehicle control</div>
+            <div>
+              <div class="entry-title">Autonomous Systems Engineer</div>
+              <div class="entry-org">UniNa Corse - Formula Student</div>
+              <ul>
+                <li>Implemented Adaptive Monte Carlo Localisation (AMCL) on the team's driverless vehicle using probabilistic modelling and sensor fusion, achieving a validated on-car deployment with no drift versus the team's SLAM-based positioning. <a href="#amcl-case-study" class="inline-case-link">Read the full case study →</a>
+                </li>
+                <li>Built a machine learning-based cone detection pipeline from camera data for real-time track boundary identification and path planning.</li>
+                <li>Developed MATLAB/Simulink models to validate vehicle dynamics and control logic before physical deployment, cutting on-track error risk.</li>
+                <li>Contributed to EKF-based state estimation and FastSLAM across perception, SLAM, and control, keeping global reference frames consistent through real-world testing.</li>
+              </ul>
             </div>
-            <div class="result-stat">
-              <div class="result-stat-val">Sim → Real</div>
-              <div class="result-stat-label">Validation path</div>
+          </div>
+          <div class="entry">
+            <div class="entry-meta">AUG 2025 <br>&mdash; FEB 2026 </div>
+            <div>
+              <div class="entry-title">Intern - Generative AI</div>
+              <div class="entry-org">VanaciPrime - Remote</div>
+              <ul>
+                <li>Designed and deployed a multi-source document retrieval system spanning internal datasets and web sources across multiple client pipelines.</li>
+                <li>Implemented relevance-based scoring and iterative ML evaluation, improving accuracy and business alignment of model output.</li>
+                <li>Built an automated pipeline to parse MRZ identity documents, populate database fields, and generate ready-to-sign contracts, removing manual data entry end-to-end.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="entry">
+            <div class="entry-meta">DEC 2020 <br>&mdash; SEP 2023 </div>
+            <div>
+              <div class="entry-title">Senior Software Analyst</div>
+              <div class="entry-org">Capgemini, Mumbai</div>
+              <ul>
+                <li>Automated a daily enterprise reporting pipeline, eliminating manual effort across ~260 reporting cycles a year and cutting average issue resolution time by ~50%.</li>
+                <li>Resolved complex production issues in enterprise integration systems (webMethods), restoring operational continuity under time pressure.</li>
+                <li>Designed onboarding and knowledge-transfer sessions for new team members, accelerating ramp-up and standardising analytical practice.</li>
+              </ul>
             </div>
           </div>
         </div>
-        <div class="case-block">
-          <div class="case-block-label">Engineering Practice</div>
-          <p>Beyond the core algorithm, I built the module to be something the team could actually operate: live trajectory and particle-cloud visualisation, projected-cone debugging overlays, smoothed pose output using a One Euro filter, and structured diagnostics so the system was easy for the rest of the team to monitor and trust, not just mathematically correct. A meaningful part of the work was debugging initialisation and runtime stability across our different startup modes, and restructuring the node so new features could be merged without breaking what already worked.</p>
+      </div>
+    </section>
+    <section class="case-study" id="amcl-case-study">
+      <div class="wrap">
+        <div class="case-kicker">Project Deep Dive - UniNa Corse Formula Student</div>
+        <h2 class="case-title">Teaching our driverless race car to know exactly where it is</h2>
+        <p class="case-lede">On a driverless Formula Student car, the controller only steers as well as the position it's given. GPS is unreliable near buildings and unusable underground, exactly where our car still needs to know where it is. I built a ROS 2 localisation module that solves this with Adaptive Monte Carlo Localisation (AMCL), and it now feeds position directly into the car's controller with no drift versus the team's SLAM-based position, even over extended runs.</p>
+        <div class="case-body">
+          <div>
+            <div class="case-block">
+              <div class="case-block-label">The Problem</div>
+              <p>Our autonomous car plans every turn and brake point based on knowing exactly where it is on track. Wheel encoders and IMUs drift over time, GPS drops out near buildings and doesn't work underground, and even our SLAM-based position built live while driving can accumulate small errors over a run. The controller needs one clean, trustworthy position estimate to steer by, not several conflicting ones.</p>
+            </div>
+            <div class="case-block">
+              <div class="case-block-label">The Approach</div>
+              <p>AMCL solves this with a "particle filter". The car maintains thousands of hypotheses about where it might be, each a guess at position and heading. I built this as a full ROS 2 module in C++: it takes in cone detections from our perception system, plus steering angle and speed from either wheel encoders or an IMU, and propagates each hypothesis forward using a kinematic bicycle model which is the same simplified physics used to predict how the car actually turns.</p>
+              <p>Each hypothesis is then scored against which cones it "expects" to see versus what perception actually detected on track. Good hypotheses survive and multiply; poor ones are pruned. I added a health check (effective sample size) that detects when the filter is becoming unreliable and automatically resamples to recover, keeping the estimate stable rather than letting it silently degrade mid-run.</p>
+              <p>Against plain odometry, wheel encoders or IMU alone, this is a clear win. Odometry has nothing to correct itself against, so small errors accumulate every timestep and the position estimate drifts steadily worse over a run. MCL corrects itself against the map on every update, so it doesn't carry that accumulating error.</p>
+              <p>I also built the module to run two ways, both feeding the same core filter: live, using the map our SLAM system builds in real time on track, or offline, using a static CSV map for controlled bench testing the same flexible pattern already used for switching between IMU and Wheel encoder input. That let the team validate and tune the filter safely off-car before trusting it on-track.</p>
+            </div>
+            <div class="case-block">
+              <div class="case-block-label">The Limitation — and Why It's Worth It Here</div>
+              <p>MCL isn't free of tradeoffs. Unlike SLAM, which builds a map while also estimating position from it, MCL can only localise against a map it already has, it can't build one itself, and it doesn't work at all against an unknown track. In our pipeline, that map comes from SLAM's own output or from a static CSV recorded earlier, so MCL is only ever as good as the map it's handed.</p>
+              <p>That's a real constraint, but it fits Formula Student well: our track layout is known and mappable before the car ever needs to drive it autonomously at speed, whether from a prior SLAM pass (Trackdrive) or a pre-recorded CSV (Skidpad). Once MCL has that map, it only has to solve localization not mapping and localisation together the way SLAM does so its position estimate held steadier and more accurate than the team's own live SLAM position over extended runs, with no drift. In a competition setting where the map is knowable in advance, that tradeoff is a straightforward win.</p>
+            </div>
+            <div class="case-block">
+              <div class="case-block-label">Vs. GPS</div>
+              <p>This is also where MCL wins over GPS. It never depends on an external signal at all — instead of listening for satellites, it continuously checks what the car's own sensors actually see against the known track layout, and corrects itself in real time. GPS isn't just "unreliable near buildings" — it's multipath reflections off grandstands and trackside structures that throw the position off by metres, and complete signal loss underground where there's no line of sight to satellites at all. MCL doesn't have either failure mode, since it isn't listening for a signal to begin with.</p>
+            </div>
+            <div class="case-block">
+              <div class="case-block-label">Results</div>
+              <p>Before touching the physical car, the logic was validated in MATLAB/Simulink against modelled vehicle dynamics, reducing the risk of costly on-track errors. On the real car, this AMCL module now feeds the controller's position input directly. Tested both offline against a static CSV map and live against our own SLAM map, it held a steady, accurate position with no drift versus the team's SLAM position, even over extended runs.</p>
+              <div>
+                <div class="diagram-frame">
+                  <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- track outline -->
+                    <path d="M 40,220 C 40,140 110,80 230,80 C 350,80 420,140 420,220 C 420,270 370,270 330,240 C 290,210 250,240 210,240 C 150,240 100,270 60,240 C 45,232 40,226 40,220 Z" fill="none" stroke="#2A2E36" stroke-width="26" stroke-linejoin="round" />
+                    <path d="M 40,220 C 40,140 110,80 230,80 C 350,80 420,140 420,220 C 420,270 370,270 330,240 C 290,210 250,240 210,240 C 150,240 100,270 60,240 C 45,232 40,226 40,220 Z" fill="none" stroke="#4FA8D8" stroke-width="1" stroke-dasharray="4 4" opacity="0.4" />
+                    <!-- particle cloud (scattered, uncertain) -->
+                    <g fill="#C8102E" opacity="0.55">
+                      <circle cx="205" cy="95" r="2.4" />
+                      <circle cx="215" cy="88" r="2.4" />
+                      <circle cx="198" cy="102" r="2.4" />
+                      <circle cx="224" cy="97" r="2.4" />
+                      <circle cx="210" cy="108" r="2.4" />
+                      <circle cx="192" cy="90" r="2.4" />
+                      <circle cx="230" cy="85" r="2.4" />
+                      <circle cx="218" cy="105" r="2.4" />
+                      <circle cx="203" cy="80" r="2.4" />
+                      <circle cx="238" cy="93" r="2.4" />
+                      <circle cx="195" cy="112" r="2.4" />
+                      <circle cx="212" cy="78" r="2.4" />
+                    </g>
+                    <text x="230" y="60" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5A5F68">INITIAL: HIGH UNCERTAINTY</text>
+                    <!-- converged particle cluster -->
+                    <g fill="#4FA8D8">
+                      <circle cx="330" cy="238" r="1.8" />
+                      <circle cx="332" cy="240" r="1.8" />
+                      <circle cx="328" cy="236" r="1.8" />
+                      <circle cx="331" cy="235" r="1.8" />
+                      <circle cx="333" cy="238" r="1.8" />
+                      <circle cx="329" cy="241" r="1.8" />
+                    </g>
+                    <circle cx="330" cy="238" r="8" fill="none" stroke="#4FA8D8" stroke-width="1.2" />
+                    <text x="330" y="270" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5A5F68">CONVERGED: CONFIDENT</text>
+                    <!-- arrow -->
+                    <path d="M 250,150 Q 290,180 315,215" fill="none" stroke="#5A5F68" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrow)" />
+                    <defs>
+                      <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+                        <path d="M0,0 L6,3 L0,6 Z" fill="#5A5F68" />
+                      </marker>
+                    </defs>
+                  </svg>
+                  <div class="diagram-caption">PARTICLE CLOUD CONVERGING ON TRUE POSITION AND STAYING THERE, LAP AFTER LAP</div>
+                </div>
+                <div class="result-stats">
+                  <div class="result-stat">
+                    <div class="result-stat-val">No drift</div>
+                    <div class="result-stat-label">Vs. SLAM position</div>
+                  </div>
+                  <div class="result-stat">
+                    <div class="result-stat-val">Real Time</div>
+                    <div class="result-stat-label">Feeds vehicle control</div>
+                  </div>
+                  <div class="result-stat">
+                    <div class="result-stat-val">Sim → Real</div>
+                    <div class="result-stat-label">Validation path</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="case-block">
+              <div class="case-block-label">Engineering Practice</div>
+              <p>Beyond the core algorithm, I built the module to be something the team could actually operate: live trajectory and particle-cloud visualisation, projected-cone debugging overlays, smoothed pose output using a One Euro filter, and structured diagnostics so the system was easy for the rest of the team to monitor and trust, not just mathematically correct. A meaningful part of the work was debugging initialisation and runtime stability across our different startup modes, and restructuring the node so new features could be merged without breaking what already worked.</p>
+            </div>
+            <a class="back-to-log" href="#log">← Back to experience</a>
+          </div>
         </div>
       </div>
-    </div>
-
-    <a class="back-to-log" href="#log">← Back to experience</a>
-  </div>
-</section>
-
-<section id="stack">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 class="section-title">The Stack</h2>
-      <div class="section-tag">Skills</div>
-    </div>
-
-    <div class="skill-grid">
-      <div>
-        <div class="skill-group-label">Technical</div>
-        <div class="pill-row">
-          <span class="pill">Python</span><span class="pill">pandas</span><span class="pill">scikit-learn</span>
-          <span class="pill">Machine Learning</span><span class="pill">Quantitative Modelling</span>
-          <span class="pill">Multivariate Analysis</span><span class="pill">Matplotlib</span><span class="pill">Seaborn</span>
-          <span class="pill">Automated Reporting</span><span class="pill">Data Pipelines</span>
-          <span class="pill">MATLAB</span><span class="pill">Simulink</span><span class="pill">C++</span><span class="pill">ROS2</span>
-          <span class="pill">AMCL</span><span class="pill">EKF</span><span class="pill">FastSLAM</span>
-          <span class="pill">Sensor Fusion</span><span class="pill">State Estimation</span>
+    </section>
+    <section id="stack">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title">The Stack</h2>
+          <div class="section-tag">Skills</div>
+        </div>
+        <div class="skill-grid">
+          <div>
+            <div class="skill-group-label">Vehicle Systems &amp; Robotics</div>
+            <div class="pill-row">
+              <span class="pill">AMCL</span>
+              <span class="pill">EKF</span>
+              <span class="pill">FastSLAM</span>
+              <span class="pill">Sensor Fusion</span>
+              <span class="pill">State Estimation</span>
+              <span class="pill">Vehicle Dynamics</span>
+              <span class="pill">Kinematic Modelling</span>
+              <span class="pill">ROS2</span>
+              <span class="pill">C++</span>
+              <span class="pill">MATLAB</span>
+              <span class="pill">Simulink</span>
+              <span class="pill">Real-Time Systems</span>
+              <span class="pill">Sim-to-Real Validation</span>
+            </div>
+          </div>
+          <div>
+            <div class="skill-group-label">Data Science &amp; ML</div>
+            <div class="pill-row">
+              <span class="pill">Python</span>
+              <span class="pill">pandas</span>
+              <span class="pill">scikit-learn</span>
+              <span class="pill">Machine Learning</span>
+              <span class="pill">Quantitative Modelling</span>
+              <span class="pill">Multivariate Analysis</span>
+              <span class="pill">Matplotlib</span>
+              <span class="pill">Seaborn</span>
+              <span class="pill">Automated Reporting</span>
+              <span class="pill">Data Pipelines</span>
+            </div>
+          </div>
+        </div>
+        <div class="ops-strip">
+          <div class="skill-group-label">Also on the team sheet</div>
+          <div class="pill-row">
+            <span class="pill">Formula Student</span>
+            <span class="pill">FIA Event Operations</span>
+            <span class="pill">Motorsport Logistics</span>
+            <span class="pill">Race-Day Operations</span>
+            <span class="pill">Crowd &amp; Venue Management</span>
+            <span class="pill">Cross-functional Collaboration</span>
+            <span class="pill">Stakeholder Communication</span>
+            <span class="pill">Volunteer Coordination</span>
+            <span class="pill">Budget &amp; Resource Coordination</span>
+            <span class="pill">Digital &amp; Creative Production</span>
+          </div>
         </div>
       </div>
-      <div>
-        <div class="skill-group-label">Operations &amp; Management</div>
-        <div class="pill-row">
-          <span class="pill">FIA Event Operations</span><span class="pill">Sports Event Coordination</span>
-          <span class="pill">Crowd &amp; Venue Management</span><span class="pill">Stakeholder Communication</span>
-          <span class="pill">Budget &amp; Resource Coordination</span><span class="pill">Volunteer Coordination</span>
-          <span class="pill">Social Media Strategy</span><span class="pill">Digital &amp; Creative Production</span>
-          <span class="pill">Cross-functional Collaboration</span><span class="pill">Fan Relations</span>
+    </section>
+    <section id="ops">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title">Trackside Ops</h2>
+          <div class="section-tag">Motorsport &amp; Sports Operations</div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="ops">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 class="section-title">Trackside Ops</h2>
-      <div class="section-tag">Motorsport &amp; Sports Operations</div>
-    </div>
-  </div>
-  <div class="ops-grid">
-    <div class="op-card">
-      <div class="op-role">Events &amp; Creative Coordinator</div>
-      <div class="op-org">Scuderia Ferrari Club Napoli</div>
-      <div class="op-date">June 2024 — Present</div>
-      <div class="op-desc">Co-organise annual kart races (~10 participants each), handling logistics and scheduling. Lead all digital and creative output for club engagement and brand presence.</div>
-    </div>
-    <div class="op-card">
-      <div class="op-role">Event Operations Volunteer — Giveaway Champion</div>
-      <div class="op-org">FIA Formula E — Berlin E-Prix</div>
-      <div class="op-date">May 2026</div>
-      <div class="op-desc">Second consecutive season on the FE circuit: engaged up to 25,000 race-day spectators. Supported crowd management and fan engagement across a two-day international event.</div>
-    </div>
-    <div class="op-card">
-      <div class="op-role">Local Organising Committee Member</div>
-      <div class="op-org">World Skate Games Italia, Rome</div>
-      <div class="op-date">Sept 2024</div>
-      <div class="op-desc">Supported delivery of a multi-discipline competition with 12,000+ athletes from 100 countries across 12 disciplines. Coordinated cross-functional planning at championship level.</div>
-    </div>
-    <div class="op-card">
-      <div class="op-role">Event Operations Volunteer — Wayfinding Champion</div>
-      <div class="op-org">FIA Formula E — Misano E-Prix</div>
-      <div class="op-date">April 2024</div>
-      <div class="op-desc">Managed crowd flow and attendee navigation at Misano World Circuit for a major FE venue; first exposure to championship-level motorsport logistics.</div>
-    </div>
-  </div>
-</section>
-
-<section id="education">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 class="section-title">Education &amp; Languages</h2>
-      <div class="section-tag">Credentials</div>
-    </div>
-
-    <div class="edu-lang">
-      <div>
-        <div class="edu-item">
-          <div class="edu-degree">Master in Data Science</div>
-          <div class="edu-school">University of Naples, Federico II</div>
-          <div class="edu-date">Oct 2023 — Expected Oct 2026</div>
+      <div class="ops-grid">
+        <div class="op-card">
+          <div class="op-role">Events &amp; Creative Coordinator</div>
+          <div class="op-org">Scuderia Ferrari Club Napoli</div>
+          <div class="op-date">June 2024 — Present</div>
+          <div class="op-desc">Co-organise annual kart races (~10 participants each), handling logistics and scheduling. Lead all digital and creative output for club engagement and brand presence.</div>
         </div>
-        <div class="edu-item">
-          <div class="edu-degree">B.Sc. Information Technology</div>
-          <div class="edu-school">University of Mumbai</div>
-          <div class="edu-date">June 2017 — Oct 2020</div>
+        <div class="op-card">
+          <div class="op-role">Event Operations Volunteer — Giveaway Champion</div>
+          <div class="op-org">FIA Formula E — Berlin E-Prix</div>
+          <div class="op-date">May 2026</div>
+          <div class="op-desc">Second consecutive season on the FE circuit: engaged up to 25,000 race-day spectators. Supported crowd management and fan engagement across a two-day international event.</div>
+        </div>
+        <div class="op-card">
+          <div class="op-role">Local Organising Committee Member</div>
+          <div class="op-org">World Skate Games Italia, Rome</div>
+          <div class="op-date">Sept 2024</div>
+          <div class="op-desc">Supported delivery of a multi-discipline competition with 12,000+ athletes from 100 countries across 12 disciplines. Coordinated cross-functional planning at championship level.</div>
+        </div>
+        <div class="op-card">
+          <div class="op-role">Event Operations Volunteer — Wayfinding Champion</div>
+          <div class="op-org">FIA Formula E — Misano E-Prix</div>
+          <div class="op-date">April 2024</div>
+          <div class="op-desc">Managed crowd flow and attendee navigation at Misano World Circuit for a major FE venue; first exposure to championship-level motorsport logistics.</div>
         </div>
       </div>
-      <div>
-        <div class="lang-row"><span class="lang-name">English</span><span class="lang-level">Proficient</span></div>
-        <div class="lang-row"><span class="lang-name">Urdu</span><span class="lang-level">Proficient</span></div>
-        <div class="lang-row"><span class="lang-name">Hindi</span><span class="lang-level">Native</span></div>
-        <div class="lang-row"><span class="lang-name">Italian</span><span class="lang-level">A2</span></div>
+    </section>
+    <section id="education">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 class="section-title">Education &amp; Languages</h2>
+          <div class="section-tag">Credentials</div>
+        </div>
+        <div class="edu-lang">
+          <div>
+            <div class="edu-item">
+              <div class="edu-degree">Master in Data Science</div>
+              <div class="edu-school">University of Naples, Federico II</div>
+              <div class="edu-date">Oct 2023 — Expected Oct 2026</div>
+            </div>
+            <div class="edu-item">
+              <div class="edu-degree">B.Sc. Information Technology</div>
+              <div class="edu-school">University of Mumbai</div>
+              <div class="edu-date">June 2017 — Oct 2020</div>
+            </div>
+          </div>
+          <div>
+            <div class="lang-row">
+              <span class="lang-name">English</span>
+              <span class="lang-level">Proficient</span>
+            </div>
+            <div class="lang-row">
+              <span class="lang-name">Urdu</span>
+              <span class="lang-level">Proficient</span>
+            </div>
+            <div class="lang-row">
+              <span class="lang-name">Hindi</span>
+              <span class="lang-level">Native</span>
+            </div>
+            <div class="lang-row">
+              <span class="lang-name">Italian</span>
+              <span class="lang-level">A2</span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<footer id="contact">
-  <div class="wrap">
-    <div class="contact-title">Let's talk data,<br>or Sunday's race.</div>
-    <div class="contact-row">
-      <a class="contact-link" href="mailto:anas.rangers70@gmail.com">anas.rangers70@gmail.com</a>
-      <a class="contact-link" href="tel:+393474723334">+39 347 4723334</a>
-      <a class="contact-link" href="https://www.linkedin.com/in/anaskhan70" target="_blank" rel="noopener">linkedin.com/in/anaskhan70</a>
-    </div>
-    <div class="foot-bottom">
-      <span>Italy</span>
-      <span>© 2026 Anas Nazeer Khan</span>
-    </div>
-  </div>
-</footer>
-
-</body>
+    </section>
+    <footer id="contact">
+      <div class="wrap">
+        <div class="contact-title">Let's talk data, <br>or Sunday's race. </div>
+        <div class="contact-row">
+          <a class="contact-link" href="mailto:anas.rangers70@gmail.com">anas.rangers70@gmail.com</a>
+          <a class="contact-link" href="tel:+393474723334">+39 347 4723334</a>
+          <a class="contact-link" href="https://www.linkedin.com/in/anaskhan70" target="_blank" rel="noopener">linkedin.com/in/anaskhan70</a>
+        </div>
+        <div class="foot-bottom">
+          <span>Italy</span>
+          <span>© 2026 Anas Nazeer Khan</span>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
