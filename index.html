@@ -504,14 +504,14 @@
 
       .result-stats {
         display: flex;
-        gap: 0;
+        gap: 20px;
         border-top: 1px solid var(--line);
         margin-top: 8px;
       }
 
       .result-stat {
         flex: 1;
-        padding: 16px 20px 0 0;
+        padding: 16px 0 0 0;
       }
 
       .result-stat-val {
@@ -866,6 +866,8 @@
               <p>MCL isn't free of tradeoffs. Unlike SLAM, which builds a map while also estimating position from it, MCL can only localise against a map it already has, it can't build one itself, and it doesn't work at all against an unknown track. In our pipeline, that map comes from SLAM's own output or from a static CSV recorded earlier, so MCL is only ever as good as the map it's handed.</p>
               <p>That's a real constraint, but it fits Formula Student well: our track layout is known and mappable before the car ever needs to drive it autonomously at speed, whether from a prior SLAM pass (Trackdrive) or a pre-recorded CSV (Skidpad). Once MCL has that map, it only has to solve localization not mapping and localisation together the way SLAM does so its position estimate held steadier and more accurate than the team's own live SLAM position over extended runs, with no drift. In a competition setting where the map is knowable in advance, that tradeoff is a straightforward win.</p>
             </div>
+          </div>
+          <div>
             <div class="case-block">
               <div class="case-block-label">Vs. GPS</div>
               <p>This is also where MCL wins over GPS. It never depends on an external signal at all — instead of listening for satellites, it continuously checks what the car's own sensors actually see against the known track layout, and corrects itself in real time. GPS isn't just "unreliable near buildings" — it's multipath reflections off grandstands and trackside structures that throw the position off by metres, and complete signal loss underground where there's no line of sight to satellites at all. MCL doesn't have either failure mode, since it isn't listening for a signal to begin with.</p>
@@ -1005,31 +1007,31 @@
           <h2 class="section-title">Trackside Ops</h2>
           <div class="section-tag">Motorsport &amp; Sports Operations</div>
         </div>
-      </div>
-      <div class="ops-grid">
-        <div class="op-card">
-          <div class="op-role">Events &amp; Creative Coordinator</div>
-          <div class="op-org">Scuderia Ferrari Club Napoli</div>
-          <div class="op-date">June 2024 — Present</div>
-          <div class="op-desc">Co-organise annual kart races (~10 participants each), handling logistics and scheduling. Lead all digital and creative output for club engagement and brand presence.</div>
-        </div>
-        <div class="op-card">
-          <div class="op-role">Event Operations Volunteer — Giveaway Champion</div>
-          <div class="op-org">FIA Formula E — Berlin E-Prix</div>
-          <div class="op-date">May 2026</div>
-          <div class="op-desc">Second consecutive season on the FE circuit: engaged up to 25,000 race-day spectators. Supported crowd management and fan engagement across a two-day international event.</div>
-        </div>
-        <div class="op-card">
-          <div class="op-role">Local Organising Committee Member</div>
-          <div class="op-org">World Skate Games Italia, Rome</div>
-          <div class="op-date">Sept 2024</div>
-          <div class="op-desc">Supported delivery of a multi-discipline competition with 12,000+ athletes from 100 countries across 12 disciplines. Coordinated cross-functional planning at championship level.</div>
-        </div>
-        <div class="op-card">
-          <div class="op-role">Event Operations Volunteer — Wayfinding Champion</div>
-          <div class="op-org">FIA Formula E — Misano E-Prix</div>
-          <div class="op-date">April 2024</div>
-          <div class="op-desc">Managed crowd flow and attendee navigation at Misano World Circuit for a major FE venue; first exposure to championship-level motorsport logistics.</div>
+        <div class="ops-grid">
+          <div class="op-card">
+            <div class="op-role">Events &amp; Creative Coordinator</div>
+            <div class="op-org">Scuderia Ferrari Club Napoli</div>
+            <div class="op-date">June 2024 — Present</div>
+            <div class="op-desc">Co-organise annual kart races (~10 participants each), handling logistics and scheduling. Lead all digital and creative output for club engagement and brand presence.</div>
+          </div>
+          <div class="op-card">
+            <div class="op-role">Event Operations Volunteer — Giveaway Champion</div>
+            <div class="op-org">FIA Formula E — Berlin E-Prix</div>
+            <div class="op-date">May 2026</div>
+            <div class="op-desc">Second consecutive season on the FE circuit: engaged up to 25,000 race-day spectators. Supported crowd management and fan engagement across a two-day international event.</div>
+          </div>
+          <div class="op-card">
+            <div class="op-role">Local Organising Committee Member</div>
+            <div class="op-org">World Skate Games Italia, Rome</div>
+            <div class="op-date">Sept 2024</div>
+            <div class="op-desc">Supported delivery of a multi-discipline competition with 12,000+ athletes from 100 countries across 12 disciplines. Coordinated cross-functional planning at championship level.</div>
+          </div>
+          <div class="op-card">
+            <div class="op-role">Event Operations Volunteer — Wayfinding Champion</div>
+            <div class="op-org">FIA Formula E — Misano E-Prix</div>
+            <div class="op-date">April 2024</div>
+            <div class="op-desc">Managed crowd flow and attendee navigation at Misano World Circuit for a major FE venue; first exposure to championship-level motorsport logistics.</div>
+          </div>
         </div>
       </div>
     </section>
