@@ -770,7 +770,7 @@
       </svg>
       <div class="wrap">
         <div class="eyebrow">Live &mdash; Italy</div>
-        <h1 class="name"> Anas Nazeer Khan <span class="sub">Autonomous systems engineer at UniNa Corse Formula Student, building the localization stack that lets a driverless race car know exactly where it is on track, backed by a Data Science Master's and ground experience at Formula E races.</span>
+        <h1 class="name"> Anas Nazeer Khan <span class="sub">Autonomous systems engineer at UniNa Corse Formula Student, specializing in computer vision, deep learning, and probabilistic localization. Building real-time object detection pipelines and the AMCL stack that lets a driverless race car know exactly where it is on track, backed by a Data Science Master's and ground experience at Formula E races.</span>
         </h1>
         <div class="telemetry-row">
           <div class="channel">
@@ -808,11 +808,11 @@
               <div class="entry-title">Autonomous Systems Engineer</div>
               <div class="entry-org">UniNa Corse - Formula Student</div>
               <ul>
-                <li>Implemented Adaptive Monte Carlo Localization (AMCL) on the team's driverless vehicle using probabilistic modelling and sensor fusion, achieving a validated on-car deployment with no drift versus the team's SLAM-based positioning. <a href="#amcl-case-study" class="inline-case-link">Read the full case study →</a>
+                <li>Developed and deployed a machine learning-based object detection pipeline for real-time cone and track-boundary identification from camera data, including colour-based discrimination between visually similar cone classes to support autonomous path planning under variable lighting and occlusion.</li>
+                <li>Implemented Adaptive Monte Carlo Localization (AMCL) on the team's driverless vehicle using probabilistic modelling and sensor fusion, achieving a validated on-car deployment currently in live track testing. <a href="#amcl-case-study" class="inline-case-link">Read the full case study →</a>
                 </li>
-                <li>Built a machine learning-based cone detection pipeline from camera data for real-time track boundary identification and path planning.</li>
-                <li>Developed MATLAB/Simulink models to validate vehicle dynamics and control logic before physical deployment, cutting on-track error risk.</li>
-                <li>Contributed to EKF-based state estimation and FastSLAM across perception, SLAM, and control, keeping global reference frames consistent through real-world testing.</li>
+                <li>Contributed to EKF-based state estimation and FastSLAM across perception, SLAM, and control modules, maintaining consistent global reference frames and structured positional outputs, documented in technical reports.</li>
+                <li>Built MATLAB/Simulink simulation models to validate vehicle dynamics and control logic pre-deployment, applying objective metrics to iterate on system reliability and reduce on-track error risk.</li>
               </ul>
             </div>
           </div>
@@ -822,9 +822,9 @@
               <div class="entry-title">Intern - Generative AI</div>
               <div class="entry-org">VanaciPrime - Remote</div>
               <ul>
-                <li>Designed and deployed a multi-source document retrieval system spanning internal datasets and web sources across multiple client pipelines.</li>
-                <li>Implemented relevance-based scoring and iterative ML evaluation, improving accuracy and business alignment of model output.</li>
-                <li>Built an automated pipeline to parse MRZ identity documents, populate database fields, and generate ready-to-sign contracts, removing manual data entry end-to-end.</li>
+                <li>Designed and deployed a multi-source document retrieval system integrating internal datasets and web-based information, enabling deep search to surface relevant business insights faster across multiple client pipelines.</li>
+                <li>Implemented relevance-based scoring and iterative ML evaluation against objective metrics to continuously improve model output quality across client use cases.</li>
+                <li>Built an automated data extraction pipeline to parse MRZ identity documents and populate structured database fields, eliminating manual data entry and reducing turnaround time end-to-end.</li>
               </ul>
             </div>
           </div>
@@ -834,8 +834,8 @@
               <div class="entry-title">Senior Software Analyst</div>
               <div class="entry-org">Capgemini, Mumbai</div>
               <ul>
-                <li>Automated a daily enterprise reporting pipeline, eliminating manual effort across ~260 reporting cycles a year and cutting average issue resolution time by ~50%.</li>
-                <li>Resolved complex production issues in enterprise integration systems (webMethods), restoring operational continuity under time pressure.</li>
+                <li>Automated a daily enterprise reporting pipeline using AWS-based data processing, eliminating manual effort across ~260 reporting cycles a year and cutting average issue resolution time by ~50%.</li>
+                <li>Resolved complex production issues in enterprise integration systems (webMethods), restoring operational continuity under time-sensitive conditions.</li>
                 <li>Designed onboarding and knowledge-transfer sessions for new team members, accelerating ramp-up and standardising analytical practice.</li>
               </ul>
             </div>
@@ -878,10 +878,8 @@
               <div>
                 <div class="diagram-frame">
                   <svg viewBox="0 0 460 300" xmlns="http://www.w3.org/2000/svg">
-                    <!-- track outline -->
                     <path d="M 40,220 C 40,140 110,80 230,80 C 350,80 420,140 420,220 C 420,270 370,270 330,240 C 290,210 250,240 210,240 C 150,240 100,270 60,240 C 45,232 40,226 40,220 Z" fill="none" stroke="#2A2E36" stroke-width="26" stroke-linejoin="round" />
                     <path d="M 40,220 C 40,140 110,80 230,80 C 350,80 420,140 420,220 C 420,270 370,270 330,240 C 290,210 250,240 210,240 C 150,240 100,270 60,240 C 45,232 40,226 40,220 Z" fill="none" stroke="#4FA8D8" stroke-width="1" stroke-dasharray="4 4" opacity="0.4" />
-                    <!-- particle cloud (scattered, uncertain) -->
                     <g fill="#C8102E" opacity="0.55">
                       <circle cx="205" cy="95" r="2.4" />
                       <circle cx="215" cy="88" r="2.4" />
@@ -897,7 +895,6 @@
                       <circle cx="212" cy="78" r="2.4" />
                     </g>
                     <text x="230" y="60" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5A5F68">INITIAL: HIGH UNCERTAINTY</text>
-                    <!-- converged particle cluster -->
                     <g fill="#4FA8D8">
                       <circle cx="330" cy="238" r="1.8" />
                       <circle cx="332" cy="240" r="1.8" />
@@ -908,7 +905,6 @@
                     </g>
                     <circle cx="330" cy="238" r="8" fill="none" stroke="#4FA8D8" stroke-width="1.2" />
                     <text x="330" y="270" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#5A5F68">CONVERGED: CONFIDENT</text>
-                    <!-- arrow -->
                     <path d="M 250,150 Q 290,180 315,215" fill="none" stroke="#5A5F68" stroke-width="1" stroke-dasharray="3 3" marker-end="url(#arrow)" />
                     <defs>
                       <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
@@ -972,6 +968,11 @@
             <div class="skill-group-label">Data Science &amp; ML</div>
             <div class="pill-row">
               <span class="pill">Python</span>
+              <span class="pill">PyTorch</span>
+              <span class="pill">Computer Vision</span>
+              <span class="pill">Deep Learning</span>
+              <span class="pill">OpenCV</span>
+              <span class="pill">YOLO (Object Detection)</span>
               <span class="pill">pandas</span>
               <span class="pill">scikit-learn</span>
               <span class="pill">Machine Learning</span>
@@ -981,6 +982,7 @@
               <span class="pill">Seaborn</span>
               <span class="pill">Automated Reporting</span>
               <span class="pill">Data Pipelines</span>
+              <span class="pill">AWS</span>
             </div>
           </div>
         </div>
@@ -1012,25 +1014,25 @@
             <div class="op-role">Events &amp; Creative Coordinator</div>
             <div class="op-org">Scuderia Ferrari Club Napoli</div>
             <div class="op-date">June 2024 — Present</div>
-            <div class="op-desc">Co-organise annual kart races (~10 participants each), handling logistics and scheduling. Lead all digital and creative output for club engagement and brand presence.</div>
+            <div class="op-desc">Co-organise annual kart racing events, managing logistics, scheduling, and coordination. Lead all digital and creative output for club engagement and brand presence.</div>
           </div>
           <div class="op-card">
             <div class="op-role">Event Operations Volunteer — Giveaway Champion</div>
             <div class="op-org">FIA Formula E — Berlin E-Prix</div>
             <div class="op-date">May 2026</div>
-            <div class="op-desc">Second consecutive season on the FE circuit: engaged up to 25,000 race-day spectators. Supported crowd management and fan engagement across a two-day international event.</div>
+            <div class="op-desc">Returned for a second consecutive Formula E season: engaged up to 25,000 race-day spectators. Contributed to crowd management and fan engagement operations under international FIA event standards.</div>
           </div>
           <div class="op-card">
             <div class="op-role">Local Organising Committee Member</div>
             <div class="op-org">World Skate Games Italia, Rome</div>
             <div class="op-date">Sept 2024</div>
-            <div class="op-desc">Supported delivery of a multi-discipline competition with 12,000+ athletes from 100 countries across 12 disciplines. Coordinated cross-functional planning at championship level.</div>
+            <div class="op-desc">Supported delivery of a major multi-discipline competition involving 12,000+ athletes from 100 countries across 12 disciplines. Coordinated cross-functional planning and stakeholder communication at championship level.</div>
           </div>
           <div class="op-card">
             <div class="op-role">Event Operations Volunteer — Wayfinding Champion</div>
             <div class="op-org">FIA Formula E — Misano E-Prix</div>
             <div class="op-date">April 2024</div>
-            <div class="op-desc">Managed crowd flow and attendee navigation at Misano World Circuit for a major FE venue; first exposure to championship-level motorsport logistics.</div>
+            <div class="op-desc">Deployed at Misano World Circuit, managing crowd flow and attendee navigation for thousands of spectators; developed operational knowledge of international motorsport event logistics.</div>
           </div>
         </div>
       </div>
@@ -1046,7 +1048,7 @@
             <div class="edu-item">
               <div class="edu-degree">Master in Data Science</div>
               <div class="edu-school">University of Naples, Federico II</div>
-              <div class="edu-date">Oct 2023 — Expected Oct 2026</div>
+              <div class="edu-date">Oct 2023 — Expected Mar 2027</div>
             </div>
             <div class="edu-item">
               <div class="edu-degree">B.Sc. Information Technology</div>
@@ -1064,24 +1066,27 @@
               <span class="lang-level">A2</span>
             </div>
             <div class="lang-row">
-              <span class="lang-name">Urdu</span>
-              <span class="lang-level">Proficient</span>
-            </div>
-            <div class="lang-row">
               <span class="lang-name">Hindi</span>
               <span class="lang-level">Native</span>
+            </div>
+            <div class="lang-row">
+              <span class="lang-name">Urdu</span>
+              <span class="lang-level">Proficient</span>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <footer id="contact">
+    <section id="contact" style="padding-bottom: 0;">
+      </section>
+    <footer>
       <div class="wrap">
         <div class="contact-title">Let's talk data, <br>or Sunday's race. </div>
         <div class="contact-row">
           <a class="contact-link" href="mailto:anas.rangers70@gmail.com">anas.rangers70@gmail.com</a>
           <a class="contact-link" href="tel:+393474723334">+39 347 4723334</a>
           <a class="contact-link" href="https://www.linkedin.com/in/anaskhan70" target="_blank" rel="noopener">linkedin.com/in/anaskhan70</a>
+          <a class="contact-link" href="https://anasssssssk.github.io/portfolio/" target="_blank" rel="noopener">anasssssssk.github.io/portfolio</a>
         </div>
         <div class="foot-bottom">
           <span>Italy</span>
